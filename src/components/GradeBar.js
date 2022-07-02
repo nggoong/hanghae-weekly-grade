@@ -62,10 +62,17 @@ const GradeBarItem = ({ data }) => {
            
             <div className='day-area'>{data.day}</div>
             <div className='scorebox-area'>
-                {/* 아까 그거 넣기 */}
-                ⭐⭐⭐⭐⭐
+            {[...Array(5)].map((n, index)=> {
+                return(
+                    <>
+                    <ScoreBox key={index} strike={index + 1 <= data.score? true : false}/>
+                    </>
+                )
+            })}
             </div>
-            <div className='actions-area'></div>
+            <div className='actions-area'>
+                <p>▶</p>
+            </div>
         </GradeBarList>       
     )
 }
@@ -83,7 +90,6 @@ const GradeBarItem = ({ data }) => {
 
 const GradeBarList = styled.div`
     display:flex;
-
     width:100%;
     height:calc(100% / 8);
     /* height: */
@@ -97,26 +103,41 @@ const GradeBarList = styled.div`
         display:flex;
         justify-content:center;
         align-items:center;
-        background:yellow;
+        /* background:yellow; */
         width:10%;
         height:100%;
+        color:#333D79;
+        font-weight:bold;
     }
     & > .scorebox-area {
         display:flex;
-        justify-content:center;
+        justify-content:space-around;
         align-items:center;
-        background:green;
+        /* background:green; */
+        box-sizing:border-box;
+        padding:0 20px;
         width:70%;
         height:100%;
+        border-right:1px solid black;
+        border-left: 1px solid black;
     }
     & > .actions-area {
         display:flex;
         justify-content:center;
         align-items:center;
-        background:blue;
+        /* background:blue; */
+        font-size:20px;
         width:20%;
         height:100%;
+        color:#333D79;
     }
     
 `
-
+const ScoreBox = styled.div`
+    background:${props=> props.strike? '#333D79':'pink'};
+    height:60%;
+    width:10%;
+    border:1px solid black;
+    border-radius:10px;
+    
+`

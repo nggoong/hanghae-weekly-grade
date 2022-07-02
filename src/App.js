@@ -4,7 +4,7 @@ import GradeBar from './components/GradeBar';
 
 let sample_day = ['일', '월', '화', '수', '목', '금', '토'];
 
-function App() {
+const App = () => {
   const [datas, setDatas] = useState([]);
 
   // 요일
