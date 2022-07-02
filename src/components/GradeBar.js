@@ -1,26 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const GradeBarItem = ({ day }) => {
+const GradeBarItem = ({ day, score }) => {
 
 
     return(
         <GradeBarList>
-            {day}
+            <div className='day-area'>{day} {score}</div>
+            <div></div>
         </GradeBarList>       
     )
 }
 
-const GradeBar = ({ days }) => {
+const GradeBar = ({ days, scores }) => {
 
 
     return(
         <>
         <GradeBarListWrapper>
-            {days.map((day, index) => <GradeBarItem day={day} key={index}/>)}
+            {days.map((day, index) => <GradeBarItem day={day} key={index} score={scores[index]}/>)}
         </GradeBarListWrapper>
+        
         <GradeBarButtonWrapper>
-            <button>sdf</button>
+            <button>RESET</button>
         </GradeBarButtonWrapper>
         </>
     )
@@ -28,7 +30,7 @@ const GradeBar = ({ days }) => {
 
 const GradeBarListWrapper = styled.div`
     width:100%;
-    height:85%;
+    height:75%;
     display:flex;
     flex-direction:column;
     justify-content: space-between;
@@ -42,7 +44,6 @@ const GradeBarButtonWrapper = styled.div`
     bottom:0;
     height:10%;
     width:100%;
-    /* background:white; */
     display:flex;
     justify-content:center;
 
@@ -56,6 +57,7 @@ const GradeBarButtonWrapper = styled.div`
         color:#FAEBEF;
         font-size:120%;
         font-weight:bold;
+        cursor:pointer;
         
     }
 `
