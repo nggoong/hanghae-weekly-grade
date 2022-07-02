@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
+import {useNavigate} from 'react-router-dom';
 
 
 
@@ -56,6 +57,8 @@ export default GradeBar;
 
 const GradeBarItem = ({ data }) => {
 
+    let navigate = useNavigate();
+    
 
     return(
         <GradeBarList>
@@ -65,12 +68,12 @@ const GradeBarItem = ({ data }) => {
             {[...Array(5)].map((n, index)=> {
                 return(
                     <>
-                    <ScoreBox key={index} strike={index + 1 <= data.score? true : false}/>
+                    <ScoreBoxDiv key={index} strike={index + 1 <= data.score? true : false}/>
                     </>
                 )
             })}
             </div>
-            <div className='actions-area'>
+            <div className='actions-area' onClick={()=>navigate(`/detail/${data.day}`)}>
                 <p>▶</p>
             </div>
         </GradeBarList>       
@@ -133,7 +136,7 @@ const GradeBarList = styled.div`
     }
     
 `
-const ScoreBox = styled.div`
+export const ScoreBoxDiv = styled.div`
     background:${props=> props.strike? '#333D79':'pink'};
     height:60%;
     width:10%;

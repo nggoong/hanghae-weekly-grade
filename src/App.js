@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import GradeBar from './components/GradeBar';
+import {Routes, Route} from 'react-router-dom';
+import Detail from './components/Detail';
 
 let sample_day = ['일', '월', '화', '수', '목', '금', '토'];
 
@@ -26,7 +28,12 @@ const App = () => {
     <div className="App">
       <Container>
         <WeeklyAppContainer>
-          <GradeBar datas={datas}/>
+          <Routes>
+          <Route path="/" element={<GradeBar datas={datas}/>}/>
+          <Route path="/detail/:day" element={<Detail/>}>
+          </Route>
+          </Routes>
+          
         </WeeklyAppContainer>
       </Container>
     </div>
