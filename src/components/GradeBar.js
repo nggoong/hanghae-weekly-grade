@@ -1,24 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const GradeBarItem = ({ day, score }) => {
+const GradeBarItem = ({ data }) => {
 
 
     return(
         <GradeBarList>
-            <div className='day-area'>{day} {score}</div>
+            <div className='day-area'>{data.day},{data.score} </div>
             <div></div>
         </GradeBarList>       
     )
 }
 
-const GradeBar = ({ days, scores }) => {
+const GradeBar = ({ datas }) => {
 
 
     return(
         <>
         <GradeBarListWrapper>
-            {days.map((day, index) => <GradeBarItem day={day} key={index} score={scores[index]}/>)}
+            {datas.map((data, index) => <GradeBarItem data={data} key={index}/>)}
         </GradeBarListWrapper>
         
         <GradeBarButtonWrapper>
