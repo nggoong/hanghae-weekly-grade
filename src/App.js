@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import GradeBar from './components/GradeBar';
 
@@ -19,7 +19,7 @@ function App() {
       day_and_score.push({day:sample_day[today++ % 7], score: new_score});
     }
     setDatas(day_and_score);
-  }, []);
+  }, [setDatas]);
 
 
   return (

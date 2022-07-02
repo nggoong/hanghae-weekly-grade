@@ -1,16 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const GradeBarItem = ({ data }) => {
 
-
-    return(
-        <GradeBarList>
-            <div className='day-area'>{data.day},{data.score} </div>
-            <div></div>
-        </GradeBarList>       
-    )
-}
 
 const GradeBar = ({ datas }) => {
 
@@ -58,11 +49,41 @@ const GradeBarButtonWrapper = styled.div`
         font-size:120%;
         font-weight:bold;
         cursor:pointer;
-        
     }
 `
 
+export default GradeBar;
+
+const GradeBarItem = ({ data }) => {
+
+
+    return(
+        <GradeBarList>
+           
+            <div className='day-area'>{data.day}</div>
+            <div className='scorebox-area'>
+                {/* 아까 그거 넣기 */}
+                ⭐⭐⭐⭐⭐
+            </div>
+            <div className='actions-area'></div>
+        </GradeBarList>       
+    )
+}
+
+
+// {[...Array(5)].map((n, index)=> {
+//     return(
+//         <>
+//         {data.day} {index}
+//         </>
+//     )
+// })}
+
+
+
 const GradeBarList = styled.div`
+    display:flex;
+
     width:100%;
     height:calc(100% / 8);
     /* height: */
@@ -71,7 +92,31 @@ const GradeBarList = styled.div`
     
     border-radius:10px;
     cursor:pointer;
+
+    & > .day-area {
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:yellow;
+        width:10%;
+        height:100%;
+    }
+    & > .scorebox-area {
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:green;
+        width:70%;
+        height:100%;
+    }
+    & > .actions-area {
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:blue;
+        width:20%;
+        height:100%;
+    }
     
 `
 
-export default GradeBar
