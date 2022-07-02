@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 import ScoreBoxDiv from './GradeBar';
 
-const Detail = () => {
+const Detail = ({ getRandomScore }) => {
     const [focusBox, setFocusBox] = useState();
     let params = useParams();
     const navigate = useNavigate();
@@ -20,7 +20,7 @@ const Detail = () => {
                     )
                 })}
             </ScoreBoxArea>
-            <button onClick={()=>navigate('/')}>평점 남기기</button>
+            <button onClick={()=> {getRandomScore(); navigate('/');}}>평점 남기기</button>
         </DetailContainer>
     )
 }

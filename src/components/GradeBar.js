@@ -4,7 +4,7 @@ import {useNavigate} from 'react-router-dom';
 
 
 
-const GradeBar = ({ datas }) => {
+const GradeBar = ({ datas, average, setAverage }) => {
 
 
     return(
@@ -12,9 +12,9 @@ const GradeBar = ({ datas }) => {
         <GradeBarListWrapper>
             {datas.map((data, index) => <GradeBarItem data={data} key={index}/>)}
         </GradeBarListWrapper>
-        
+        <p>평균 평점 : {average}</p>
         <GradeBarButtonWrapper>
-            <button>RESET</button>
+            <button onClick={()=> setAverage(0)}>RESET</button>
         </GradeBarButtonWrapper>
         </>
     )
@@ -67,9 +67,7 @@ const GradeBarItem = ({ data }) => {
             <div className='scorebox-area'>
             {[...Array(5)].map((n, index)=> {
                 return(
-                    <>
                     <ScoreBoxDiv key={index} strike={index + 1 <= data.score? true : false}/>
-                    </>
                 )
             })}
             </div>

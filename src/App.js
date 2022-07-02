@@ -8,9 +8,9 @@ let sample_day = ['일', '월', '화', '수', '목', '금', '토'];
 
 const App = () => {
   const [datas, setDatas] = useState([]);
+  const [average, setAverage] = useState(''); //함수형 초기화 ?
 
-  // 요일
-  useEffect(()=> {
+  const getRandomScore = () => {
     // 오늘 무슨 요일인지 받아오기
     const dateobj = new Date();
     let today = dateobj.getDay();
@@ -20,8 +20,22 @@ const App = () => {
       
       day_and_score.push({day:sample_day[today++ % 7], score: new_score});
     }
+
+
+    let sum = day_and_score.reduce((a, b) => a + b.score, 0);
     setDatas(day_and_score);
-  }, [setDatas]);
+    setAverage(String(sum / 7).split('').splice(0, 3).join(''))
+  }
+
+  // 요일
+  useEffect(()=> {
+    getRandomScore();
+  }, []);
+
+  useEffect(() => {
+    let sum = datas.reduce((a, b) => { return a + b.score}, 0);
+    setAverage(String(sum / 7).split('').splice(0, 3).join(''))
+  }, [datas])
 
 
   return (
@@ -29,8 +43,8 @@ const App = () => {
       <Container>
         <WeeklyAppContainer>
           <Routes>
-          <Route path="/" element={<GradeBar datas={datas}/>}/>
-          <Route path="/detail/:day" element={<Detail/>}>
+          <Route path="/" element={<GradeBar datas={datas} average={average} setAverage={setAverage}/>}/>
+          <Route path="/detail/:day" element={<Detail getRandomScore={getRandomScore}/>}>
           </Route>
           </Routes>
           
