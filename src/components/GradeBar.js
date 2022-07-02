@@ -28,7 +28,7 @@ const GradeBar = ({ days }) => {
 
 const GradeBarListWrapper = styled.div`
     width:100%;
-    height:80%;
+    height:85%;
     display:flex;
     flex-direction:column;
     justify-content: space-between;
@@ -52,6 +52,7 @@ const GradeBarButtonWrapper = styled.div`
         height:70%;
         background:#333D79;
         border-radius:10px;
+        border:none;
         color:#FAEBEF;
         font-size:120%;
         font-weight:bold;
