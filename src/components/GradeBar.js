@@ -12,9 +12,14 @@ const GradeBar = ({ datas, average, setAverage }) => {
         <GradeBarListWrapper>
             {datas.map((data, index) => <GradeBarItem data={data} key={index}/>)}
         </GradeBarListWrapper>
+
+        <AverageArea>
         <p>평균 평점 : {average}</p>
+        </AverageArea>
+        
+          
         <GradeBarButtonWrapper>
-            <button onClick={()=> setAverage(0)}>RESET</button>
+            <button onClick={()=> setAverage('0')}>RESET</button>
         </GradeBarButtonWrapper>
         </>
     )
@@ -50,6 +55,17 @@ const GradeBarButtonWrapper = styled.div`
         font-size:120%;
         font-weight:bold;
         cursor:pointer;
+    }
+`
+
+const AverageArea = styled.div`
+    display:flex;
+    justify-content:center;
+    width:100%;
+    & > p {
+        color:#333D79;
+        font-size:20px;
+        font-weight:bold;
     }
 `
 

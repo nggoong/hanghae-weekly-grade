@@ -8,7 +8,7 @@ let sample_day = ['일', '월', '화', '수', '목', '금', '토'];
 
 const App = () => {
   const [datas, setDatas] = useState([]);
-  
+
   const [average, setAverage] = useState(() => {
     let sum = datas.reduce((a, b) => a + b.score, 0);
     return String(sum / 7).split('').splice(0, 3).join('');
@@ -27,7 +27,6 @@ const App = () => {
     setDatas(day_and_score);
   }
 
-  // 요일
   useEffect(()=> {
     getDayScore();
   }, []);
