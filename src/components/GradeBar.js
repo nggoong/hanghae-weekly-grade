@@ -1,11 +1,35 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {useNavigate} from 'react-router-dom';
 
+let sample_day = ['일', '월', '화', '수', '목', '금', '토'];
 
+const GradeBar = () => {
+    const [datas, setDatas] = useState([]);
 
-const GradeBar = ({ datas, average, setAverage }) => {
-
+    const [average, setAverage] = useState(() => {
+      let sum = datas.reduce((a, b) => a + b.score, 0);
+      return String(sum / 7).split('').splice(0, 3).join('');
+    });
+  
+    useEffect(()=> {
+      // 오늘 무슨 요일인지 받아오기
+      const dateobj = new Date();
+      let today = dateobj.getDay();
+      let day_and_score = []; // {day:요일, score:점수}를 담는 배열
+      for(let i = 0; i < sample_day.length; i++) {
+        let new_score = Math.floor(Math.random() * 5) + 1; // 반복 시 계속 난수를 불러옴
+        
+        day_and_score.push({day:sample_day[today++ % 7], score: new_score});
+      }
+      setDatas(day_and_score);
+    }, []);
+  
+  
+    useEffect(() => {
+      let sum = datas.reduce((a, b) => { return a + b.score}, 0);
+      setAverage(String(sum / 7).split('').splice(0, 3).join(''))
+    }, [datas])
 
     return(
         <>
@@ -93,16 +117,6 @@ const GradeBarItem = ({ data }) => {
         </GradeBarList>       
     )
 }
-
-
-// {[...Array(5)].map((n, index)=> {
-//     return(
-//         <>
-//         {data.day} {index}
-//         </>
-//     )
-// })}
-
 
 
 const GradeBarList = styled.div`

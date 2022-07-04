@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
-import ScoreBoxDiv from './GradeBar';
 
-const Detail = ({ getDayScore }) => {
+const Detail = () => {
     const [focusBox, setFocusBox] = useState();
     let params = useParams();
     const navigate = useNavigate();
@@ -20,7 +19,7 @@ const Detail = ({ getDayScore }) => {
                     )
                 })}
             </ScoreBoxArea>
-            <button onClick={()=> {getDayScore(); navigate('/');}}>평점 남기기</button>
+            <button onClick={()=> {navigate('/');}}>평점 남기기</button>
         </DetailContainer>
     )
 }
