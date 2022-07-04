@@ -25,7 +25,6 @@
 ### 5. 배포하기
 
 * firebase로 배포
-* URL: https://sparta-react-basic-2d4d9.web.app/
 
 
 ## skill stack🙂
