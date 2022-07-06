@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {useNavigate} from 'react-router-dom';
+import Average from './Average';
 
 let sample_day = ['일', '월', '화', '수', '목', '금', '토'];
 
@@ -37,9 +38,7 @@ const GradeBar = () => {
             {datas.map((data, index) => <GradeBarItem data={data} key={index}/>)}
         </GradeBarListWrapper>
 
-        <AverageArea>
-        <p>평균 평점 : {average}</p>
-        </AverageArea>
+        <Average average={average}/>
         
           
         <GradeBarButtonWrapper>
@@ -79,17 +78,6 @@ const GradeBarButtonWrapper = styled.div`
         font-size:120%;
         font-weight:bold;
         cursor:pointer;
-    }
-`
-
-const AverageArea = styled.div`
-    display:flex;
-    justify-content:center;
-    width:100%;
-    & > p {
-        color:#333D79;
-        font-size:20px;
-        font-weight:bold;
     }
 `
 
